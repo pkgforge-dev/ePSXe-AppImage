@@ -6,7 +6,13 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm pipewire-audio pipewire-jack patchelf unzip sdl12-compat
+pacman -Syu --noconfirm \
+	pipewire-audio \
+	pipewire-jack  \
+	patchelf       \
+	unzip          \
+	sdl12-compat   \
+	sdl_ttf
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
@@ -29,5 +35,7 @@ mv -v ./epsxe_x64 ./epsxe
 # this app needs an older version of libcurl to work
 patchelf --replace-needed libcurl.so.4 libcurl-compat.so.4.8.0 ./epsxe
 
+ldd ./epsxe
+./epsxe -v
 ./epsxe -v | awk 'END {print $NF}' > ~/version
 
