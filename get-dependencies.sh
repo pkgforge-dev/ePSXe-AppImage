@@ -6,14 +6,26 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm pipewire-audio pipewire-jack libidn libssh2 libpsl openssl krb5 zlib
+pacman -Syu --noconfirm pipewire-audio pipewire-jack patchelf unzip
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
 get-debloated-pkgs --add-common --prefer-nano
 
 # Comment this out if you need an AUR package
-make-aur-package libcurl-compat
-make-aur-package epsxe
+make-aur-package --chaotic-aur libcurl-compat
+make-aur-package --chaotic-aur ncurses5-compat-libs 
 
-# If the application needs to be manually built that has to be done down here
+echo "Getting epsxe binary..."
+echo "---------------------------------------------------------------"
+BINARY=$(wget --retry-connrefused --tries=30 https://www.epsxe.com/download.php -O - \
+  | sed 's/[()",{} ]/\n/g' | grep -oi "https.*linux.*x64.*zip$" | head -1)
+wget --retry-connrefused --tries=30 "$BINARY"
+unzip ./*.zip
+chmod +x ./epsxe_x64
+
+# this app needs an older version of libcurl to work
+patchelf --replace-needed libcurl.so.4 libcurl-compat.so.4.8.0 ./epsxe_x64
+
+./epsxe_x64 -v | awk 'END {print $NF}' > ~/version
+
