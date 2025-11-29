@@ -14,7 +14,7 @@ export DEPLOY_OPENGL=1
 export DEPLOY_PIPEWIRE=1
 
 # Deploy dependencies
-quick-sharun ./epsxe_x64
+quick-sharun ./epsxe
 
 # Additional changes can be done in between here
 
