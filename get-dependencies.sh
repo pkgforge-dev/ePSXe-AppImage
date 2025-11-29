@@ -37,5 +37,4 @@ patchelf --replace-needed libcurl.so.4 libcurl-compat.so.4.8.0 ./epsxe
 
 ldd ./epsxe
 ./epsxe -v
-./epsxe -v | awk 'END {print $NF}' > ~/version
-
+./epsxe -v | awk 'END {print $NF}' | sed -e 's|.$||' > ~/version
