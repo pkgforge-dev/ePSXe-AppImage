@@ -6,7 +6,7 @@ ARCH=$(uname -m)
 
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
-pacman -Syu --noconfirm pipewire-audio pipewire-jack nghttp2 libidn libssh2 libpsl openssl krb5 zlib
+pacman -Syu --noconfirm pipewire-audio pipewire-jack libidn libssh2 libpsl openssl krb5 zlib
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
