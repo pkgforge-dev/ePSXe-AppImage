@@ -14,7 +14,10 @@ export DEPLOY_OPENGL=1
 export DEPLOY_PIPEWIRE=1
 
 # Deploy dependencies
-quick-sharun ./epsxe
+quick-sharun \
+	./epsxe             \
+	/usr/lib/libnsl.so* \
+	/usr/lib/libnss_compat.so*
 
 # Additional changes can be done in between here
 
