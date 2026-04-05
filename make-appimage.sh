@@ -23,3 +23,6 @@ quick-sharun \
 
 # Turn AppDir into AppImage
 quick-sharun --make-appimage
+
+# Also make a aarch64 appimage that uses FEX
+quick-sharun --make-aarch64-appimage
