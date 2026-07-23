@@ -11,7 +11,6 @@ export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}
 export ICON=https://aur.archlinux.org/cgit/aur.git/plain/epsxe.png?h=epsxe
 export DESKTOP=https://aur.archlinux.org/cgit/aur.git/plain/epsxe.desktop\?h\=epsxe
 export DEPLOY_OPENGL=1
-export DEPLOY_PIPEWIRE=1
 
 # Deploy dependencies
 quick-sharun \
