@@ -7,6 +7,7 @@ ARCH=$(uname -m)
 echo "Installing package dependencies..."
 echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm \
+	libcurl-compat \
 	unzip          \
 	sdl12-compat   \
 	sdl_ttf
@@ -17,7 +18,6 @@ get-debloated-pkgs --add-common
 
 # Comment this out if you need an AUR package
 make-aur-package openssl-1.0
-make-aur-package --chaotic-aur libcurl-compat
 make-aur-package --chaotic-aur ncurses5-compat-libs
 
 echo "Getting epsxe binary..."
